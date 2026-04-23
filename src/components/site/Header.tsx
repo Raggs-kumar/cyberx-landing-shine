@@ -24,19 +24,14 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-strong shadow-card" : "bg-transparent"
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-200 ${
+        scrolled ? "bg-background/85 backdrop-blur border-b border-border" : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="relative">
-            <Shield className="h-7 w-7 text-primary" />
-            <div className="absolute inset-0 blur-md bg-primary/40 group-hover:bg-primary/60 transition" />
-          </div>
-          <span className="font-mono font-bold tracking-widest text-lg">
-            CYBER<span className="text-gradient">X</span>
-          </span>
+        <Link to="/" className="flex items-center gap-2">
+          <Shield className="h-5 w-5 text-primary" />
+          <span className="font-semibold tracking-tight text-base">CYBERX</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -44,8 +39,8 @@ export function Header() {
             <Link
               key={n.to}
               to={n.to}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors relative"
-              activeProps={{ className: "text-primary" }}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              activeProps={{ className: "text-foreground" }}
             >
               {n.label}
             </Link>
@@ -53,7 +48,7 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Button asChild className="bg-gradient-primary text-primary-foreground hover:opacity-90 shadow-glow font-semibold">
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
             <Link to="/contact">Request Demo</Link>
           </Button>
         </div>
@@ -68,20 +63,20 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden glass-strong border-t border-border animate-fade-up">
+        <div className="md:hidden bg-background border-t border-border animate-fade-up">
           <div className="px-6 py-4 flex flex-col gap-4">
             {nav.map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="text-sm text-muted-foreground hover:text-primary"
-                activeProps={{ className: "text-primary" }}
+                className="text-sm text-muted-foreground hover:text-foreground"
+                activeProps={{ className: "text-foreground" }}
               >
                 {n.label}
               </Link>
             ))}
-            <Button asChild className="bg-gradient-primary text-primary-foreground shadow-glow">
+            <Button asChild className="bg-primary text-primary-foreground">
               <Link to="/contact" onClick={() => setOpen(false)}>Request Demo</Link>
             </Button>
           </div>
